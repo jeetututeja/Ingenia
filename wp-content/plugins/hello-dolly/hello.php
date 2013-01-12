@@ -36,6 +36,7 @@ Don't stop 'til you get enough.
 Done is a little better than perfect.
 If you've never failed, you've never tried anything new.
 Laser focus.
+To infinity and beyond!
 Es fuego.";
 
 	// Here we split it into lines
