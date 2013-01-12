@@ -23,7 +23,7 @@ Good design should make a product useful
 Good design is aesthetic design.
 Good design will make a product understandable.
 Good design is honest.
-Good design is ubnostruisve.
+Good design is unobtrusive.
 And good design is as little design as possible.
 Like to build crazy, amazing things.
 Having a great idea is just the 10% of the work.
