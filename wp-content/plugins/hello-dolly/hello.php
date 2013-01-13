@@ -67,7 +67,7 @@ function dolly_css() {
 		padding-$x: 15px;
 		padding-top: 5px;		
 		margin: 0;
-		font-size: 13px;
+		font-size: 12px;
 		color: #696969;
 	}
 	</style>
