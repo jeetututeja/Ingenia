@@ -4,7 +4,8 @@ Description: Used to style the TinyMCE editor.
 */
 
 html .mceContentBody {
-	max-width: 584px;
+	max-width: 620px;
+	margin: 1em auto 0 auto;
 }
 * {
 	color: inherit;
@@ -27,19 +28,36 @@ h1,h2,h3,h4,h5,h6 {
 h1,
 h2 {
 	color: #000;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 0 0 .8125em;
 }
 h3 {
-	font-size: 10px;
+	font-size: 18px;
 	letter-spacing: 0.1em;
 	line-height: 2.6em;
 	text-transform: uppercase;
 }
-h4, h5, h6 {
-	font-size: 14px;
+h4 {
+	font-size: 16px;
 	margin: 0;
+}
+h2 strong,
+h2 b, 
+h2 em, 
+h2 i,
+h2 a, 
+h3 strong,
+h3 b, 
+h3 em, 
+h3 i,
+h3 a, 
+h4 strong,
+h4 b, 
+h4 em, 
+h4 i,
+h4 a {
+	font-size: inherit;
 }
 hr {
 	background-color: #ccc;
@@ -99,12 +117,14 @@ cite {
 big {
 	font-size: 131.25%;
 }
+blockquote,
 .mceContentBody blockquote,
 .mceContentBody blockquote p {
 	font-family: Georgia, "Bitstream Charter", serif !important;
 	font-style: italic !important;
-	font-weight: normal;
-	margin: 0 3em;
+	font-weight: bold;
+	margin: 0;
+	font-size: 20px;
 }
 .mceContentBody blockquote em,
 .mceContentBody blockquote i,
@@ -117,6 +137,27 @@ big {
 	font-weight: 300;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
+}
+p q {
+	color: peru;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1.1;
+	padding: 8px;
+	font-style: italic;
+}
+.pull.alignright {
+	margin: 0 -10.25% 0 1.625em;
+	width: 40%;
+}
+.pull.alignleft {
+	width: 40%;
+	margin: 0 1.625em 0 -10.25%;
+	text-align: right;
+}
+.pull.aligncenter {
+	clear: both;
+	margin: 7px 30px;
 }
 pre {
 	background: #f4f4f4;
@@ -282,11 +323,26 @@ img.aligncenter {
 	color: #666;
 	font-family: Georgia, serif !important;
 	font-size: 12px;
-	margin: 0 0 0.6em 0 !important;
-	padding: 0 0 5px 40px;
+	margin: 0 0 0.4em 0 !important;
+	padding: 10px 0 5px 40px;
 	position: relative;
 	text-align: left;
 }
+.wp-caption .wp-caption-text strong,
+.wp-caption-dd strong,
+.wp-caption .wp-caption-text em,
+.wp-caption-dd em {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.wp-caption .wp-caption-text a,
+.wp-caption-dd a {
+	font-size: inherit;
+	font-family: inherit;
+}
+
 .wp-caption .wp-caption-text:before {
 	color: #666;
 	content: '\2014';

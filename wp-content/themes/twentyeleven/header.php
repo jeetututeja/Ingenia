@@ -23,7 +23,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -65,75 +65,78 @@
 	 */
 	wp_head();
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js">
+</script>
+<script type="application/x-javascript">
+/mobi/i.test(navigator.userAgent) && !location.hash && setTimeout(function () {
+  if (!pageYOffset) window.scrollTo(0, 1);
+}, 1000);
+</script>
+<script type="text/javascript">
+jQuery(function($){
+var domain=["ingenia.dev","alpha.ingeniaup.com"];
+
+//Takes care of http
+$('a[href^="http://"]')
+  .not('[href*="'+domain[0]+'"]')
+  .not('[href*="'+domain[1]+'"]')
+  .attr('rel','external');
+  
+//Takes care of https 
+$('a[href^="https://"]')
+  .not('[href*="'+domain[0]+'"]')
+  .not('[href*="'+domain[1]+'"]')
+  .attr('rel','external');
+});
+
+jQuery(function(){
+  jQuery('a[rel*=external]').click(function(){
+    window.open(this.href);
+    return false;
+  });
+});
+</script>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
-			<hgroup>
-				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</hgroup>
-
-			<?php
-				// Check to see if the header image has been removed
-				$header_image = get_header_image();
-				if ( $header_image ) :
-					// Compatibility with versions of WordPress prior to 3.4.
-					if ( function_exists( 'get_custom_header' ) ) {
-						// We need to figure out what the minimum width should be for our featured image.
-						// This result would be the suggested width if the theme were to implement flexible widths.
-						$header_image_width = get_theme_support( 'custom-header', 'width' );
-					} else {
-						$header_image_width = HEADER_IMAGE_WIDTH;
-					}
-					?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<?php
-					// The header image
-					// Check if this is a post or page, if it has a thumbnail, and if it's a big one
-					if ( is_singular() && has_post_thumbnail( $post->ID ) &&
-							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), array( $header_image_width, $header_image_width ) ) ) &&
-							$image[1] >= $header_image_width ) :
-						// Houston, we have a new header image!
-						echo get_the_post_thumbnail( $post->ID, 'post-thumbnail' );
-					else :
-						// Compatibility with versions of WordPress prior to 3.4.
-						if ( function_exists( 'get_custom_header' ) ) {
-							$header_image_width  = get_custom_header()->width;
-							$header_image_height = get_custom_header()->height;
-						} else {
-							$header_image_width  = HEADER_IMAGE_WIDTH;
-							$header_image_height = HEADER_IMAGE_HEIGHT;
-						}
-						?>
-					<img src="<?php header_image(); ?>" width="<?php echo $header_image_width; ?>" height="<?php echo $header_image_height; ?>" alt="" />
-				<?php endif; // end check for featured image or standard header ?>
-			</a>
-			<?php endif; // end check for removed header image ?>
-
-			<?php
-				// Has the text been hidden?
-				if ( 'blank' == get_header_textcolor() ) :
+		<div id="firebar">
+		<?php show_top_must_read(); ?>
+		</div>
+		<div id="hello-user">
+			<?php global $current_user;
+				get_currentuserinfo();
+				$current_user_username = $current_user->user_login;
+				$current_user_email = $current_user->user_email;
+				$current_user_firstname = $current_user->user_firstname;
+				$current_user_lasname = $current_user->user_lastname;
+				$current_user_displayname = $current_user->display_name;
+				$current_user_userid = $current_user->ID;
+				$current_user_nicename = $current_user->user_nicename;
 			?>
-				<div class="only-search<?php if ( $header_image ) : ?> with-image<?php endif; ?>">
-				<?php get_search_form(); ?>
-				</div>
-			<?php
-				else :
-			?>
-				<?php get_search_form(); ?>
+			<?php echo get_avatar( $current_user_email, 200, 'http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=100', '¡Hey! Aquí debes estar tú...' ); ?>
+			<?php if (is_user_logged_in()) : ?>
+				<p><?php hello_fellow_user() ?><script src="<?php echo get_template_directory_uri(); ?>/js/ingenia.js"></script><br/>			
+				<strong><?php if (!$current_user_firstname == "") : ?><?php echo $current_user_firstname ?><?php else : ?><?php echo $current_user_nicename ?><?php endif; ?></strong> <span class="online">●</span></p>
+				<span class="tools"><strong><?php if (current_user_can('edit_posts')) : ?><a class="highlight" href="<?php echo get_bloginfo( 'url' ); ?>/wp-admin/post-new.php">Crear</a> · <?php endif; ?><a class="highlight" href="<?php echo get_bloginfo( 'url' ); ?>/wp-admin/profile.php">Perfil</a> ·</strong> <a href="<?php echo wp_logout_url( get_permalink() ); ?>">Salir</a></span>
+			<?php else : ?>
+				<p>Hola. Eres bienvenido,
+				<strong>Humano misterioso</strong></p>
+				<span class="tools"><a href="<?php echo get_bloginfo( 'url' ); ?>/wp-login.php?redirect_to=<?php echo get_permalink(); ?>">Ingresa</a> <strong>· <a class="highlight" href="<?php echo get_bloginfo( 'url' ); ?>/wp-login.php?action=register&redirect_to=<?php echo get_permalink(); ?>">Regístrate</a></strong></span>
 			<?php endif; ?>
+		</div>
+		
+		<hgroup>
+			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+		</hgroup>
 
-			<nav id="access" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
-				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'twentyeleven' ); ?>"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
-				<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			</nav><!-- #access -->
+		<?php get_search_form(); ?>
+
+		<nav id="access" role="navigation">
+			<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_id' => 'sections' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container_id' => 'companies' ) ); ?>
+		</nav><!-- #access -->
 	</header><!-- #branding -->
-
-
-	<div id="main">

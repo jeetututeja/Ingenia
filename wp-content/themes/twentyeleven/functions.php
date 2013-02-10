@@ -38,16 +38,22 @@
  * @since Twenty Eleven 1.0
  */
 
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) )
 	$content_width = 584;
 
+
+
 /**
  * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
  */
 add_action( 'after_setup_theme', 'twentyeleven_setup' );
+
+
 
 if ( ! function_exists( 'twentyeleven_setup' ) ):
 /**
@@ -93,7 +99,8 @@ function twentyeleven_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
-
+	register_nav_menu( 'secondary', 'Secondary Menu' );
+	
 	// Add support for a variety of post formats
 	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
 
@@ -154,6 +161,8 @@ function twentyeleven_setup() {
 	add_image_size( 'large-feature', $custom_header_support['width'], $custom_header_support['height'], true );
 	// Used for featured posts if a large-feature doesn't exist.
 	add_image_size( 'small-feature', 500, 300 );
+	
+	add_image_size( 'galaxy', 500, 320, 1 );
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
@@ -209,6 +218,8 @@ function twentyeleven_setup() {
 }
 endif; // twentyeleven_setup
 
+
+
 if ( ! function_exists( 'twentyeleven_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
@@ -248,6 +259,8 @@ function twentyeleven_header_style() {
 	<?php
 }
 endif; // twentyeleven_header_style
+
+
 
 if ( ! function_exists( 'twentyeleven_admin_header_style' ) ) :
 /**
@@ -299,6 +312,8 @@ function twentyeleven_admin_header_style() {
 }
 endif; // twentyeleven_admin_header_style
 
+
+
 if ( ! function_exists( 'twentyeleven_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
@@ -326,6 +341,8 @@ function twentyeleven_admin_header_image() { ?>
 <?php }
 endif; // twentyeleven_admin_header_image
 
+
+
 /**
  * Sets the post excerpt length to 40 words.
  *
@@ -337,6 +354,8 @@ function twentyeleven_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
 
+
+
 if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
 /**
  * Returns a "Continue Reading" link for excerpts
@@ -345,6 +364,8 @@ function twentyeleven_continue_reading_link() {
 	return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
 }
 endif; // twentyeleven_continue_reading_link
+
+
 
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link().
@@ -357,19 +378,25 @@ function twentyeleven_auto_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
 
+
+
 /**
  * Adds a pretty "Continue Reading" link to custom post excerpts.
  *
  * To override this link in a child theme, remove the filter and add your own
  * function tied to the get_the_excerpt filter hook.
- */
+
+
 function twentyeleven_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= twentyeleven_continue_reading_link();
+		$output .= '';
 	}
 	return $output;
 }
 add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );
+
+*/
+
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
@@ -380,6 +407,8 @@ function twentyeleven_page_menu_args( $args ) {
 	return $args;
 }
 add_filter( 'wp_page_menu_args', 'twentyeleven_page_menu_args' );
+
+
 
 /**
  * Register our sidebars and widgetized areas. Also register the default Epherma widget.
@@ -441,6 +470,8 @@ function twentyeleven_widgets_init() {
 }
 add_action( 'widgets_init', 'twentyeleven_widgets_init' );
 
+
+
 if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
 /**
  * Display navigation to next/previous pages when applicable
@@ -458,6 +489,8 @@ function twentyeleven_content_nav( $html_id ) {
 }
 endif; // twentyeleven_content_nav
 
+
+
 /**
  * Return the URL for the first link found in the post content.
  *
@@ -470,6 +503,8 @@ function twentyeleven_url_grabber() {
 
 	return esc_url_raw( $matches[1] );
 }
+
+
 
 /**
  * Count the number of footer sidebars to enable dynamic classes for the footer
@@ -503,6 +538,8 @@ function twentyeleven_footer_sidebar_class() {
 	if ( $class )
 		echo 'class="' . $class . '"';
 }
+
+
 
 if ( ! function_exists( 'twentyeleven_comment' ) ) :
 /**
@@ -573,6 +610,8 @@ function twentyeleven_comment( $comment, $args, $depth ) {
 }
 endif; // ends check for twentyeleven_comment()
 
+
+
 if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
@@ -593,6 +632,8 @@ function twentyeleven_posted_on() {
 }
 endif;
 
+
+
 /**
  * Adds two classes to the array of body classes.
  * The first is if the site has only had one author with published posts.
@@ -612,3 +653,51 @@ function twentyeleven_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'twentyeleven_body_classes' );
 
+
+
+/**
+ * Adds two classes to the array of body classes.
+ * The first is if the site has only had one author with published posts.
+ */
+function hello_fellow_user_get_lyric() {
+	/** These are the lyrics we want :) */
+	$lyrics = "Arigato.
+Aloha.
+Salut.
+Bonjour.";
+	// Here we split it into lines
+	$lyrics = explode( "\n", $lyrics );
+	// And then randomly choose a line
+	return wptexturize( $lyrics[ mt_rand( 0, count( $lyrics ) - 1 ) ] );
+}
+// This just echoes the chosen line, we'll position it later
+function hello_fellow_user() {
+	$chosen = hello_fellow_user_get_lyric();
+	echo $chosen . " ";
+}
+
+
+function show_top_must_read() {
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => 1,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'editorial',
+				'field' => 'slug',
+				'terms' => 'top-must-read'
+			)
+		)
+	);
+	$top_must_read_query = new WP_Query($args);
+	
+	if ( $top_must_read_query->have_posts() ) {
+		while ( $top_must_read_query->have_posts() ) {
+			$top_must_read_query->the_post();
+			$post_title = get_the_title();
+			$post_link = get_permalink();
+			echo "<p>Esto también es fuego" . "  ➞ " . "<a class='top-must-read' href='$post_link' title='$post_title'>$post_title</a></p>";
+		}
+	wp_reset_postdata();
+	}
+}
