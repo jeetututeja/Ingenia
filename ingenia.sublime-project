@@ -2,8 +2,20 @@
 	"folders":
 	[
 		{
-			"path": "/Users/juandiegogonzales/Sites/Ingenia",
-			"name": "Ingenia"
+			"path": "wp-content/themes/Ingenia",
+			"name": "ingenia-fire"
+		},
+		{
+			"path": "wp-content/plugins",
+			"name":"ingenia-plugins"
+		},
+		{
+			"path": "/",
+			"name": "ingenia-wp"
 		}
-	]
+	],
+	"settings":
+	{
+    	"tab_size": 3
+	}
 }

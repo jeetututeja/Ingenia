@@ -62,7 +62,7 @@ class Facebook_WP_Extend extends WP_Facebook {
 			'httpversion' => '1.1',
 			'timeout' => 60,
 			'user-agent' => apply_filters( 'http_headers_useragent', 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ) . '; facebook-php-' . self::VERSION . '-wp' ),
-			'headers' => array( 'Connection' => 'close' , 'Content-type' => 'application/x-www-form-urlencoded'),
+			'headers' => array( 'Connection' => 'close' , 'Content-Type' => 'application/x-www-form-urlencoded' ),
 			'sslverify' => false, // warning: might be overridden by 'https_ssl_verify' filter
 			'body' => http_build_query( $params, '', '&' )
 		) ) );
@@ -85,6 +85,7 @@ class Facebook_WP_Extend extends WP_Facebook {
 			'redirection' => 0,
 			'httpversion' => '1.1',
 			'timeout' => 5,
+			'headers' => array( 'Connection' => 'close' ),
 			'user-agent' => apply_filters( 'http_headers_useragent', 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ) . '; facebook-php-' . self::VERSION . '-wp' )
 		) ) );
 
@@ -92,6 +93,56 @@ class Facebook_WP_Extend extends WP_Facebook {
 			return json_decode( $response, true );
 
 		return array();
+	}
+
+	public static function graph_api( $path, $method = 'GET', $params = array() ) {
+		global $wp_version;
+
+		if ( ! is_string( $path ) )
+			return;
+
+		$path = ltrim( $path, '/' ); // normalize the leading slash
+		if ( ! $path )
+			return;
+
+		// pass a reference to WordPress plugin origin with each request
+		if ( ! is_array( $params ) )
+			$params = array();
+		if ( ! isset( $params['ref'] ) )
+			$params['ref'] = 'fbwpp';
+		foreach ( $params as $key => $value ) {
+			if ( ! is_string( $value ) )
+				$params[$key] = json_encode( $value );
+		}
+
+		$url = self::$DOMAIN_MAP['graph'] . $path;
+		$http_args = array(
+			'redirection' => 0,
+			'httpversion' => '1.1',
+			'sslverify' => false, // warning: might be overridden by 'https_ssl_verify' filter
+			'headers' => array( 'Connection' => 'close' ),
+			'user-agent' => apply_filters( 'http_headers_useragent', 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ) . '; facebook-php-' . self::VERSION . '-wp' )
+		);
+
+		if ( $method === 'GET' ) {
+			if ( ! empty( $params ) )
+				$url .= '?' . http_build_query( $params, '', '&' );
+			$http_args['timeout'] = 5;
+			$response = self::handle_response( wp_remote_get( $url, $http_args ) );
+		} else {
+			// POST
+			// WP_HTTP does not support DELETE verb. store as method param for interpretation by Facebook Graph API server
+			if ( $method === 'DELETE' )
+				$params['method'] = 'DELETE';
+			$http_args['timeout'] = 60;
+			$http_args['body'] = http_build_query( $params, '', '&' );
+			$http_args['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
+
+			$response = self::handle_response( wp_remote_post( $url, $http_args ) );
+		}
+
+		if ( isset( $response ) && $response )
+			return json_decode( $response, true );
 	}
 
 	/**
@@ -106,53 +157,16 @@ class Facebook_WP_Extend extends WP_Facebook {
 	 * @throws WP_FacebookApiException
 	 */
 	public static function graph_api_with_app_access_token( $path, $method = 'GET', $params = array() ) {
-		global $facebook_loader, $wp_version;
+		global $facebook_loader;
 
-		if ( ! ( isset( $facebook_loader ) && $facebook_loader->app_access_token_exists() && is_string( $path ) ) )
+		if ( ! ( isset( $facebook_loader ) && $facebook_loader->app_access_token_exists() ) )
 			return;
 
-		$path = ltrim( $path, '/' ); // normalize the leading slash
-		if ( ! $path )
-			return;
-
-		if ( ! in_array( $method, array( 'GET', 'POST', 'DELETE' ), true ) )
-			$method = 'GET';
 		if ( ! is_array( $params ) )
 			$params = array();
 		$params['access_token'] = $facebook_loader->credentials['access_token'];
-		if ( ! isset( $params['ref'] ) )
-			$params['ref'] = 'fbwpp';
-		foreach ( $params as $key => $value ) {
-			if ( ! is_string( $value ) )
-				$params[$key] = json_encode( $value );
-		}
 
-		$url = self::$DOMAIN_MAP['graph'] . $path;
-		$http_args = array(
-			'redirection' => 0,
-			'httpversion' => '1.1',
-			'sslverify' => false, // warning: might be overridden by 'https_ssl_verify' filter
-			'user-agent' => apply_filters( 'http_headers_useragent', 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ) . '; facebook-php-' . self::VERSION . '-wp' )
-		);
-
-		if ( $method === 'GET' ) {
-			if ( ! empty( $params ) )
-				$url .= '?' . http_build_query( $params, '', '&' );
-			$http_args['timeout'] = 5;
-			$response = self::handle_response( wp_remote_get( $url, $http_args ) );
-		} else {
-			// WP_HTTP does not support DELETE verb. store as method param for interpretation by Facebook Graph API server
-			if ( $method === 'DELETE' )
-				$params['method'] = 'DELETE';
-			$http_args['timeout'] = 60;
-			$http_args['body'] = http_build_query( $params, '', '&' );
-			$http_args['headers'] = array( 'Connection' => 'close' , 'Content-type' => 'application/x-www-form-urlencoded' );
-
-			$response = self::handle_response( wp_remote_post( $url, $http_args ) );
-		}
-
-		if ( isset( $response ) && $response )
-			return json_decode( $response, true );
+		return self::graph_api( $path, $method, $params );
 	}
 
 	/**
@@ -334,6 +348,11 @@ class Facebook_WP_Extend extends WP_Facebook {
 		Facebook_User::update_user_meta( get_current_user_id(), $key, $value );
 	}
 
+	/**
+	 * Get data persisted by the Facebook PHP SDK using WordPress-specific access methods
+	 *
+	 * @since 1.0
+	 */
 	protected function getPersistentData( $key, $default = false ) {
 		if ( ! in_array( $key, self::$kSupportedKeys ) ) {
 			self::errorLog( 'Unsupported key passed to getPersistentData.' );
@@ -346,7 +365,12 @@ class Facebook_WP_Extend extends WP_Facebook {
 		return Facebook_User::get_user_meta( get_current_user_id(), $key, true );
 	}
 
-	protected function clearPersistentData($key) {
+	/**
+	 * Delete data persisted by the Facebook PHP SDK using WordPress-specific access method
+	 *
+	 * @since 1.0
+	 */
+	protected function clearPersistentData( $key ) {
 		if ( ! in_array( $key, self::$kSupportedKeys ) ) {
 			self::errorLog( 'Unsupported key passed to clearPersistentData.' );
 			return;
@@ -358,6 +382,11 @@ class Facebook_WP_Extend extends WP_Facebook {
 		Facebook_User::delete_user_meta( get_current_user_id(), $key );
 	}
 
+	/**
+	 * Delete data persisted by the Facebook PHP SDK for every possible Facebook PHP SDK data key
+	 *
+	 * @since 1.0
+	 */
 	protected function clearAllPersistentData() {
 		foreach ( self::$kSupportedKeys as $key ) {
 			$this->clearPersistentData($key);
