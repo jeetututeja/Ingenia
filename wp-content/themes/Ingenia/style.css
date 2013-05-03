@@ -65,7 +65,7 @@ footer, header, hgroup, menu, nav, section {
 
 #page {
 	margin: 0 auto;
-	max-width: 100%;
+	max-width: 1000px;
 	overflow: hidden;
 }
 #primary {
