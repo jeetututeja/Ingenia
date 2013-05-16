@@ -25,7 +25,7 @@
 			<div id="site-generator">
 				Edición por <b>Álvaro</b>, Juan Diego y <b>Mauricio</b>. Diseño por <a href="http://juandiegogonzales.com">Juan Diego</a>.
 				<br>
-				<a mailto="<?php get_bloginfo('admin_email') ?>"><?php echo get_bloginfo('admin_email') ?></a>
+				<a href="mailto:<?php echo get_bloginfo('admin_email') ?>"><?php echo get_bloginfo('admin_email') ?></a>
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
