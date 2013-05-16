@@ -23,8 +23,9 @@
 			?>
 
 			<div id="site-generator">
-				<?php do_action( 'twentyeleven_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentyeleven' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentyeleven' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyeleven' ), 'WordPress' ); ?></a>
+				Edición por <b>Álvaro</b>, Juan Diego y <b>Mauricio</b>. Diseño por <a href="http://juandiegogonzales.com">Juan Diego</a>.
+				<br>
+				<a mailto="<?php get_bloginfo('admin_email') ?>"><?php echo get_bloginfo('admin_email') ?></a>
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
