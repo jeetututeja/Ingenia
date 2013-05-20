@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Facebook
- * @version 1.3.1
+ * @version 1.4
  */
 /*
 Plugin Name: Facebook
@@ -9,7 +9,7 @@ Plugin URI: http://wordpress.org/extend/plugins/facebook/
 Description: Add Facebook social plugins and the ability to publish new posts to a Facebook Timeline or Facebook Page. Official Facebook plugin.
 Author: Facebook
 Author URI: https://developers.facebook.com/wordpress/
-Version: 1.3.1
+Version: 1.4
 License: GPL2
 License URI: license.txt
 Domain Path: /languages/
@@ -28,7 +28,7 @@ class Facebook_Loader {
 	 * @since 1.1
 	 * @var string
 	 */
-	const VERSION = '1.3.1';
+	const VERSION = '1.4';
 
 	/**
 	 * Default Facebook locale
@@ -288,6 +288,8 @@ class Facebook_Loader {
 	 * @since 1.1
 	 */
 	public function public_init() {
+		global $facebook_loader;
+
 		// no feed filters yet
 		if ( is_feed() || is_404() )
 			return;
@@ -308,6 +310,11 @@ class Facebook_Loader {
 
 			// treat as if comments are open for post types with comments under management by Comments Box
 			add_filter( 'comments_open', array( 'Facebook_Comments', 'comments_open_filter' ), 10, 2 );
+
+			if ( isset( $facebook_loader ) && $facebook_loader->app_access_token_exists() ) {
+				// add Facebook comments count to WordPress comments count
+				add_filter( 'get_comments_number', array( 'Facebook_Comments', 'get_comments_number_filter' ), 10, 2 );
+			}
 
 			// display comments number XFBML for JS SDK interpretation if used in template
 			add_filter( 'comments_number', array( 'Facebook_Comments', 'comments_number_filter' ), 10, 2 );
