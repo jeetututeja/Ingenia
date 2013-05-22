@@ -28,6 +28,14 @@ function addAnalytics() {
 
 add_action('wp_head', 'addAnalytics'); // Add hook for front-end <head></head>
 
+
+add_filter( 'wp_mail_from_name', 'mail_from_site_name' );
+function mail_from_site_name()
+{
+    return get_bloginfo('name');
+}
+
+
 /* add_action('template_redirect', 'redirect_shortlink');
 function redirect_shortlink() {
     global $post;
