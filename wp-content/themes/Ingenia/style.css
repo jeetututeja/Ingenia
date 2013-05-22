@@ -3177,8 +3177,13 @@ singular q.pull.alignleft {}
     margin: 0 auto;
 }
 
- {}
 .archive .category {
     max-width: 1000px;
     margin: 0 auto;
+}
+article li li {
+padding-bottom: 0;
+}
+article li {
+padding: 0.4em 0;
 }
