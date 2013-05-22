@@ -228,7 +228,7 @@ function add_custom_taxonomies_series() {
             'new_item_name' => __( 'Nombre de la nueva serie' ),
             'search_items' =>  __( 'Buscar series' ),
             'popular_items' =>  __( 'Series calientes' ),
-            'separate_items_with_commas' => null,
+            'separate_items_with_commas' => __( 'Esto es para una genial e ilativa serie de posts · ' ),
             'add_or_remove_items' => __( 'Añadir o quitar series' ),
             'choose_from_most_used' => __( 'Escoger de las <strong>series</strong> más usadas' )
         ),
@@ -296,7 +296,7 @@ function add_custom_taxonomies_products() {
             'add_new_item' => __( 'Añadir nuevo producto' ),
             'new_item_name' => __( 'Nombre del nuevo producto' ),
             'popular_items' =>  __( 'Productos calientes' ),
-            'separate_items_with_commas' => __( 'Separar productos con comas ·' ),
+            'separate_items_with_commas' => __( 'Aquí van los productos que se inmiscuyen en la publicación ·' ),
             'add_or_remove_items' => __( 'Añadir o quitar productos' ),
             'choose_from_most_used' => __( 'Escoger de <strong>productos</strong> calientes' )
             
@@ -331,7 +331,7 @@ function add_custom_taxonomies_people() {
             'new_item_name' => __( 'Nombre de la nueva persona' ),
             'search_items' =>  __( 'Buscar personas' ),
             'popular_items' =>  __( 'Personas populares' ),
-            'separate_items_with_commas' => __( 'Separar personas con comas ·' ),
+            'separate_items_with_commas' => __( '...Si el artículo trata de personas en especial ·' ),
             'add_or_remove_items' => __( 'Añadir o quitar personas' ),
             'choose_from_most_used' => __( 'Escoger de las <strong>personas</strong> más usadas' )
         ),
@@ -476,7 +476,7 @@ function new_posts_tags()
         'update_item' => 'Actualizar tema',
         'add_new_item' => 'Añadir nuevo tema',
         'new_item_name' => 'Nombre del nuevo tema',
-        'separate_items_with_commas' => 'Separar temas con comas ·',
+        'separate_items_with_commas' => 'Los temas o tópicos que aborda esta pieza ·',
         'add_or_remove_items' => 'Añadir o eliminar temas',
         'choose_from_most_used' => 'Escoger <strong>temas</strong> calientes',
     );
@@ -833,7 +833,7 @@ function set_user_metaboxes($user_id=NULL) {
 
 function excerpt_count_js(){
       echo '<script>jQuery(document).ready(function(){
-jQuery("#postexcerpt .inside").after("<div style=\"position:relative;left:10px;color:#555;margin-bottom:10px;\">El <strong>extracto</strong> tiene <input type=\"text\" value=\"0\" maxlength=\"3\" size=\"1\" id=\"excerpt_counter\" readonly=\"\" style=\"background:#f9f9f9;\"> caracteres de 180 ~ 220 recomendados.</div>");
+jQuery("#postexcerpt .inside").after("<div style=\"position:relative;left:10px;color:#555;margin-bottom:10px;\">El <strong>extracto</strong> será distribuido como el resumen del post por toda la red. Tiene <input type=\"text\" value=\"0\" maxlength=\"3\" size=\"1\" id=\"excerpt_counter\" readonly=\"\" style=\"background:#f9f9f9;\"> caracteres de 160 ~ 200 recomendados.</div>");
      jQuery("#excerpt_counter").val(jQuery("#excerpt").val().length);
      jQuery("#excerpt").keyup( function() {
      jQuery("#excerpt_counter").val(jQuery("#excerpt").val().length);
