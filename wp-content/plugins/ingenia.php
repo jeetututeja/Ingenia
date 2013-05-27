@@ -11,6 +11,8 @@ Version: 0.1
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
+add_filter( 'wpseo_use_page_analysis', '__return_false' );
+
 function addAnalytics() {
     echo "<script type='text/javascript'>
     var _gaq = _gaq || [];
