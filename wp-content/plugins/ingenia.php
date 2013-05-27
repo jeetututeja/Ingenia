@@ -40,11 +40,13 @@ add_action('wp_head', 'addBetterGraphImage'); // Add hook for front-end <head></
 
 
 add_filter( 'wp_mail_from_name', 'mail_from_site_name' );
-function mail_from_site_name()
-{
+function mail_from_site_name() {
     return get_bloginfo('name');
 }
-
+add_filter ("wp_mail_from", "mail_from_site_admin_email");
+function mail_from_site_admin_email() {
+    return get_bloginfo('admin_email');
+}
 
 /* add_action('template_redirect', 'redirect_shortlink');
 function redirect_shortlink() {
