@@ -164,6 +164,13 @@ function twentyeleven_setup() {
 	
 	add_image_size( 'galaxy', 500, 320, 1 );
 
+	add_image_size( 'graph', 600, 600, 1 );
+
+	function sc_opengraph_image_size($size="large") {
+	return "graph";
+}
+add_filter('wpseo_opengraph_image_size','sc_opengraph_image_size',10,1);
+
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
 		'wheel' => array(

@@ -11,8 +11,6 @@ Version: 0.1
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
 
-add_filter( 'wpseo_use_page_analysis', '__return_false' );
-
 function addAnalytics() {
     echo "<script type='text/javascript'>
     var _gaq = _gaq || [];
@@ -29,6 +27,16 @@ function addAnalytics() {
 }
 
 add_action('wp_head', 'addAnalytics'); // Add hook for front-end <head></head>
+
+function addBetterGraphImage() {
+    if ( is_single() ) {
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'graph' );
+        echo "<meta property='og:image' content='" . $image[0] . "' /> \n";
+        echo "<meta property='og:image:width' content='600' /> \n";
+        echo "<meta property='og:image:height' content='600' /> \n";
+    }
+}
+add_action('wp_head', 'addBetterGraphImage', 99); // Add hook for front-end <head></head>
 
 
 add_filter( 'wp_mail_from_name', 'mail_from_site_name' );
