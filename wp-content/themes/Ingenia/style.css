@@ -620,7 +620,7 @@ a:hover {
 	position: relative;
 	display: inline-block;
 	padding: 0.25em 0.05em 0.25em 0.3em;
-	margin: 0 0.2em;
+	margin: 0 0.35em;
 	border-radius: 0.5em;
 }
 #access a {
@@ -702,8 +702,7 @@ a:hover {
 }
 #companies li {
 	margin: 0 0.3em;
-	padding-right: 0.6em;
-	padding-left: 0.6em;
+	padding: 0.4em 0.6em;
 }
 #companies a {
 	padding: 0 0 0 1.8em;
@@ -736,7 +735,7 @@ a:hover {
 	background-color: #eee;
 }
 #companies .facebook a {
-	background-image: url(images/facebook.png);
+	background-image: url(images/facebook.svg);
 }
 #companies .google a {
 	background-image: url(images/chrome.svg);
