@@ -1,0 +1,45 @@
+# This robots.txt is part of a master plan to conquer Google.
+
+User-agent: *
+
+Allow: /wp-content/uploads/
+
+Disallow: /cgi-bin/
+
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/themes/
+
+Disallow: /comment-page-
+
+Disallow: */trackback/
+Disallow: */feed/
+
+Disallow: /?s=
+Disallow: /buscar/
+
+Sitemap: http://ingeniaup.com/sitemap_index.xml
+Sitemap: http://ingeniaup.com/sitemap-news.xml
+Sitemap: http://ingeniaup.com/post-sitemap.xml
+
+# Crawl engine specific
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Adsbot-Google
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+
+# Ingenia -- Es fuego.
+# esingenia.com
+
+# Feel free to use this thing with any of your projects.
