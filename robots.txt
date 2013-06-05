@@ -2,6 +2,8 @@
 
 User-agent: *
 
+Allow: /
+
 Allow: /wp-content/uploads/
 
 Disallow: /cgi-bin/
