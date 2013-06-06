@@ -990,4 +990,4 @@ add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 add_filter('jpeg_quality', function($arg){return 100;});
 
 // Disable the page analysis score from showing up in publish box and edit posts pages
-add_filter( 'wpseo_use_page_analysis', '__return_false' );
+// add_filter( 'wpseo_use_page_analysis', '__return_false' );
