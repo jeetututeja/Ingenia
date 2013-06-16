@@ -991,3 +991,24 @@ add_filter('jpeg_quality', function($arg){return 100;});
 
 // Disable the page analysis score from showing up in publish box and edit posts pages
 // add_filter( 'wpseo_use_page_analysis', '__return_false' );
+
+// Add Ingenia logo to the login page
+function ingenia_login_logo() {
+    echo '<style type="text/css">'.
+             'h1 a { background-image:url('.get_bloginfo( 'template_directory' ).'/images/ingenia-login.png) !important; }'.
+         '</style>';
+}
+add_action( 'login_head', 'ingenia_login_logo' );
+
+// Add url to login img
+function ingenia_login_url() {
+    return home_url( '/' );
+}
+add_filter( 'login_headerurl', 'ingenia_login_url' );
+
+// Add login title to img
+function ingenia_login_title() {
+    $blogtitledesc = get_option( 'blogname' ) . " &mdash; " . get_option( 'blogdescription' );
+    return $blogtitledesc;
+}
+add_filter( 'login_headertitle', 'ingenia_login_title' );
