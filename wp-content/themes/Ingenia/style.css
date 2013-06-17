@@ -312,7 +312,7 @@ body, input, textarea {
 	line-height: 1.625;
 }
 body {
-	background: #e2e2e2;
+	background: #eee;
 }
 #page {
 	background: transparent;
@@ -509,7 +509,7 @@ a:hover {
 #firebar {
 	position: fixed;
 	z-index: 100;
-	background: rgb(222,222,222);
+	background: #e2e2e2;
 	width: 100%;
 	margin: 0 auto;
 	max-width: 1000px;
@@ -642,7 +642,7 @@ a:hover {
 }
 #sections ul {
 	margin: 0 0 0.4em 0;
-	background-color: #f6f6f6;
+	background-color: #f5f5f5;
 	padding: 0.2em 0 0.25em 0;
 }
 #sections a {
@@ -3160,7 +3160,7 @@ singular q.pull.alignleft {}
 }
 #big-headline h2 {
     padding: 0.8em 2em;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
     font-size: 2em;
     font-weight: 500;
     box-shadow: 0 1px 5px rgba(0,0,0,0.3);
