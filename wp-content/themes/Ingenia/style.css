@@ -516,7 +516,7 @@ a:hover {
 	font-size: 14px;
 	overflow: hidden;
 	max-height: 2em;
-	box-shadow: 0 1px 6px -3px #888;
+	box-shadow: 0 1px 4px -3px #888;
 }
 #firebar p {
 	margin:0;
