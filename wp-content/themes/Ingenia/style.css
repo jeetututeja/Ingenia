@@ -738,13 +738,13 @@ a:hover {
 	background-image: url(images/facebook.svg);
 }
 #companies .google a {
-	background-image: url(images/chrome.svg);
+	background-image: url(images/google.png);
 }
 #companies .apple a {
 	background-image: url(images/apple.svg);
 }
 #companies .microsoft a {
-	background-image: url(images/windows.svg);
+	background-image: url(images/microsoft.svg);
 }
 
 /* Search Form */
