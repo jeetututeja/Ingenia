@@ -700,7 +700,8 @@ function show_top_must_read() {
 			$top_must_read_query->the_post();
 			$post_title = get_the_title();
 			$post_link = get_permalink();
-			echo "<p>Esto también es fuego" . "  ➞ " . "<a class='top-must-read' href='$post_link' title='$post_title'>$post_title</a></p>";
+			$ingenia_logo = "<img src='/wp-content/themes/Ingenia/images/ingenia.svg' style='margin: 0 1px -1px 4px; width: 12px;'>";
+			echo "<p>Esto también es fuego" . $ingenia_logo . "<a class='top-must-read' href='$post_link' title='$post_title'>$post_title</a></p>";
 		}
 	wp_reset_postdata();
 	}

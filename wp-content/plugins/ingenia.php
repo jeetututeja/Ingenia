@@ -995,7 +995,7 @@ add_filter('jpeg_quality', function($arg){return 100;});
 // Add Ingenia logo to the login page
 function ingenia_login_logo() {
     echo '<style type="text/css">'.
-             'h1 a { background-image:url('.get_bloginfo( 'template_directory' ).'/images/ingenia-login.png) !important; }'.
+             'h1 a { background-image:url('.get_bloginfo( 'template_directory' ).'/images/ingenia-login.png) !important; background-size: contain; }'.
          '</style>';
 }
 add_action( 'login_head', 'ingenia_login_logo' );

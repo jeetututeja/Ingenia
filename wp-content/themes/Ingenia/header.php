@@ -48,10 +48,10 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
-	<header id="branding" role="banner">
-		<div id="firebar">
+	<div id="firebar">
 		<?php show_top_must_read(); ?>
-		</div>
+	</div>
+	<header id="branding" role="banner">
 		<div id="hello-user">
 			<?php global $current_user;
 				get_currentuserinfo();
