@@ -590,7 +590,7 @@ a:hover {
 	color: #222;
 	font-size: 52px;
 	text-decoration: none;
-	font-family: "HelveticaNeue-Medium";
+	font-family: "HelveticaNeue-Medium","HelveticaNeue","Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #site-title a {
 	color:#000;
@@ -2940,58 +2940,8 @@ p.comment-form-comment {
     cursor: pointer;
 }
 
-#nebula {
-    max-width: 1000px;
-    margin: 0 auto 2.4em auto;
-    overflow: hidden;
-}
 
-#nebula .nebula-feature {
-    float: left;
-    width: 30.1%;
-    position: relative;
-    padding: 1.6%;
-    background: rgba(0,0,0,0.05);
-    border-top: 2px solid rgba(0,0,0,0.05);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-#nebula .nebula-title {
-    font-size: 1.5em;
-    line-height: 1.1;
-    font-weight: 500;
-    color: #333;
-}
-#nebula .nebula-heading p {
-    font-size: 0.8em;
-    color: #555;
-    padding: 0.3em 0 0 0;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    margin: 0.45em 0 0 0;
-}
-#nebula .nebula-heading span {
-    font-weight: bold;
-}
-
-#nebula .nebula-feature .nebula-img {
-    line-height: 0;
-    font-size: 0;
-}
-#nebula img {
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-    position: relative;
-}
-
-#nebula .nebula-feature .the-nebula {
-    font-size: 0; line-height: 0; 
-    box-shadow: inset 0px 0px 100px rgba(0,0,0,0.7);
-}
-
-#nebula .nebula-feature .nebula-heading {
-    margin-top: 0.5em;
-}
+/* aurora */
 
 #aurora {
     max-width: 1000px;
@@ -3001,6 +2951,80 @@ p.comment-form-comment {
 
 #aurora .aurora-feature {
     float: left;
+    width: 30.1%;
+    position: relative;
+    padding: 1.6%;
+    background: rgba(0,0,0,0.05);
+    border-top: 2px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+#aurora .aurora-title {
+    font-size: 1.5em;
+    line-height: 1.1;
+    font-weight: 500;
+    color: #333;
+}
+#aurora .aurora-heading p {
+    font-size: 0.8em;
+    color: #555;
+    padding: 0.3em 0 0 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin: 0.45em 0 0 0;
+}
+#aurora .aurora-heading span {
+    font-weight: bold;
+}
+
+#aurora .aurora-feature .aurora-img {
+    line-height: 0;
+    font-size: 0;
+}
+#aurora img {
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    position: relative;
+}
+
+#aurora .aurora-feature .the-aurora {
+    font-size: 0; line-height: 0; 
+    box-shadow: inset 0px 0px 100px rgba(0,0,0,0.7);
+}
+
+#aurora .aurora-feature .aurora-heading {
+    margin-top: 0.5em;
+}
+
+#aurora .aurora-category {
+    z-index: 1;
+    position: absolute;
+    margin: 0.4em 0.25em;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+#aurora .aurora-category a {
+    background-color: rgba(222,222,222,0.8);
+    border-radius: 0.7em;
+    padding: 0.12em 0.5em 0.2em 0.45em;
+    color: #333;
+}
+#aurora .aurora-category a:hover {
+    background-color: rgba(222,222,222,1);
+    text-decoration: none;
+}
+
+
+/* Nebula */
+
+#nebula {
+    max-width: 1000px;
+    margin: 0 auto 2.4em auto;
+    overflow: hidden;
+}
+
+#nebula .nebula-feature {
+    float: left;
     width: 33.33%;
 }
 
@@ -3009,7 +3033,7 @@ p.comment-form-comment {
     color: wheat;
 }
 
-#aurora .aurora-heading .aurora-title {
+#nebula .nebula-heading .nebula-title {
     color: white;
     text-shadow: 1px 1px 1px black;
     font-size: 1.3em;
@@ -3017,20 +3041,20 @@ p.comment-form-comment {
     font-weight: 500;
 }
 
-#aurora .aurora-feature .aurora-img {
+#nebula .nebula-feature .nebula-img {
     width: 100%;
     height: 320px;
     position: relative;
     z-index: 0;
 }
 
-#aurora .aurora-title {
+#nebula .nebula-title {
     font-size: 1.3em;
     z-index: 1;
     line-height: 1.35;
     overflow: hidden;
 }
-#aurora h2 {
+#nebula h2 {
     z-index: 1;
     padding: 0.8em 0.8em 0.3em 0.8em;
     font-weight: 500;
@@ -3040,58 +3064,42 @@ p.comment-form-comment {
     bottom: 0;
 }
 
-#aurora .aurora-title-link {
+#nebula .nebula-title-link {
     color: #f5f5f5;
     display: block;
 }
-#nebula .nebula-category {
-    z-index: 1;
-    position: absolute;
-    margin: 0.4em 0.25em;
-    font-size: 0.85em;
-    font-weight: 500;
+
+#nebula .feature-full {
 }
-#nebula .nebula-category a {
-    background-color: rgba(222,222,222,0.8);
-    border-radius: 0.7em;
-    padding: 0.12em 0.5em 0.2em 0.45em;
-    color: #333;
-}
-#nebula .nebula-category a:hover {
-    background-color: rgba(222,222,222,1);
-    text-decoration: none;
-}
-#aurora .feature-full {
-}
-#aurora .aurora-meta {
+#nebula .nebula-meta {
     padding: 0.4em 1.35em 1.35em 1.35em;
 }
-#aurora .feature-full {
+#nebula .feature-full {
     background-image: -webkit-linear-gradient(top, transparent , rgba(0,0,0,0.6));
     background-color: rgba(0,0,0,0.2);
     height: 100%;
     bottom: 0;
     background-image: -moz-linear-gradient(top, transparent , rgba(0,0,0,0.6));
 }
-#aurora .aurora-time-author {
+#nebula .nebula-time-author {
     font-size: 0.9em;
     color: #333;
     padding-bottom: 0.4em;
     margin: 0 0 0.4em;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-#aurora span.aurora-time {
+#nebula span.nebula-time {
 	color: #565656;
 }
-#aurora .aurora-excerpt {
+#nebula .nebula-excerpt {
     font-size: 1.1em;
     margin: 0;
 }
-#aurora span.aurora-author {
+#nebula span.nebula-author {
     font-weight: 500;
 }
 
-#aurora .aurora-title-link:hover {
+#nebula .nebula-title-link:hover {
     color: wheat;
     text-decoration: none;
 }
@@ -3100,7 +3108,7 @@ p.comment-form-comment {
     color: wheat;
 }
 
-#aurora .aurora-quote {
+#nebula .nebula-quote {
     margin: 0.4em 0;
     font-weight: bold;
     font-size: 1.3em;
@@ -3110,14 +3118,14 @@ p.comment-form-comment {
     padding: 0.1em;
 }
 
-#aurora .aurora-quote a {
+#nebula .nebula-quote a {
     color: peru;
 }
 
-#aurora q.alignright {
+#nebula q.alignright {
     margin: 0;
 }
-#aurora q:hover {
+#nebula q:hover {
     text-decoration: underline;
 }
 
