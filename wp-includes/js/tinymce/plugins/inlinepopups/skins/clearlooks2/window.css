@@ -124,12 +124,3 @@ color:#FFF
 .clearlooks2 .mceConfirm .mceOk {left:50%; top:auto; margin-left: -90px}
 .clearlooks2 .mceConfirm .mceCancel {left:50%; top:auto}
 .clearlooks2 .mceConfirm .mceIcon {background:url(img/confirm.gif)}
-
-q.pull.alignright {
-    width: 40%;
-    margin-right: -62px;
-}
-
-q.pull.alignright {
-    width: 40%;
-}
