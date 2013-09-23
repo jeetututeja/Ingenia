@@ -99,8 +99,8 @@ switch($step) {
 	<li>Nombre de la base de datos</li>
 	<li>Nombre de usuario de la base de datos</li>
 	<li>Contraseña de la base de datos</li>
-	<li>Host de la base de datos</li>
-	<li>Prefijo de tabla (si quieres ejecutar más de un WordPress en una sola base de datos</li>
+	<li>Host de la base de datos (en el 99% de los casos, <em>localhost</em>)</li>
+	<li>Prefijo de tabla (si quieres ejecutar más de un WordPress en una sola base de datos)</li>
 </ol>
 <p><strong>Si por alguna razón no funciona la creación automática de este archivo no te preocupes. Todo lo que hace es rellenar un fichero de configuración con la información de la base de datos. También puedes simplemente abrir el fichero <code>wp-config-sample.php</code> en un editor de texto, rellenar la información y guardarlo como <code>wp-config.php</code>. </strong></p>
 <p>En la mayoría de las ocasiones esta información te la facilita tu proveedor de alojamiento. Si no tienes esta información tendrás que contactar con ellos antes de poder continuar. Si ya estás listo &hellip;</p>
@@ -113,7 +113,7 @@ switch($step) {
 		display_header();
 	?>
 <form method="post" action="setup-config.php?step=2">
-	<p>A continuación deberás introducir los detalles de conexión con tu base de datos. Si no estás seguro de cuales son contacta con tu proveedor de alojamiento. </p>
+	<p>A continuación deberás introducir los detalles de conexión con tu base de datos. Si no estás seguro de cuáles son contacta con tu proveedor de alojamiento. </p>
 	<table class="form-table">
 		<tr>
 			<th scope="row"><label for="dbname">Nombre de la base de datos</label></th>
@@ -242,7 +242,7 @@ switch($step) {
 	if ( ! is_writable(ABSPATH) ) :
 		display_header();
 ?>
-<p>Lo siento pero no se ha podido escribir en el fichero <code>wp-config.php</code>.</p>
+<p>Lo siento, pero no se ha podido escribir en el fichero <code>wp-config.php</code>.</p>
 <p>Puedes crear mahualmente el archivo <code>wp-config.php</code> y pegar dentro el siguiente texto.</p>
 <textarea cols="98" rows="15" class="code"><?php
 		foreach( $configFile as $line ) {
