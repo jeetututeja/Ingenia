@@ -89,4 +89,15 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_id' => 'sections' ) ); ?>
 			<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container_id' => 'companies' ) ); ?>
 		</nav><!-- #access -->
+		<div align="center">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- ingenia -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:728px;height:90px"
+			     data-ad-client="ca-pub-2188285947855424"
+			     data-ad-slot="7321360991"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
 	</header><!-- #branding -->

@@ -541,6 +541,7 @@ a:hover {
 	margin: 30px auto 0 auto;
 	background: white;
 	overflow: hidden;
+	padding-bottom: 10px;
 }
 #hello-user {
 	width: 26%;
