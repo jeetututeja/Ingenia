@@ -22,6 +22,18 @@ get_header(); ?>
 
 					<?php get_template_part( 'content-single', get_post_format() ); ?>
 
+					<div align="center" style="margin-bottom:10px;">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- ingenia2 -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:336px;height:280px"
+						     data-ad-client="ca-pub-2188285947855424"
+						     data-ad-slot="6951100990"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+
 					<?php comments_template( '', true ); ?>
 
 				<?php endwhile; // end of the loop. ?>
