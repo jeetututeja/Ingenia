@@ -28,6 +28,7 @@ function addAnalytics() {
 
 add_action('wp_head', 'addAnalytics'); // Add hook for front-end <head></head>
 
+/*
 function addBetterGraphImage() {
     if ( is_single() ) {
         $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'graph' );
@@ -37,7 +38,7 @@ function addBetterGraphImage() {
     }
 }
 add_action('wp_head', 'addBetterGraphImage'); // Add hook for front-end <head></head>
-
+*/
 
 add_filter( 'wp_mail_from_name', 'mail_from_site_name' );
 function mail_from_site_name() {
