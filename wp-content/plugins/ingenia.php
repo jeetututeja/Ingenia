@@ -8,7 +8,11 @@ Author URI: http://juandiegogonzales.com/
 Version: 0.1
 */
 
-flush_rewrite_rules();
+add_action( 'init','myplugin_activate' );
+function myplugin_activate() {
+    // register taxonomies/post types here
+    flush_rewrite_rules();
+}
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wlwmanifest_link');
