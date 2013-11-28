@@ -25,7 +25,7 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
 <title><?php wp_title(' &mdash; ', true,'right'); ?><?php bloginfo('name'); ?></title>
-<link rel="stylesheet" type="text/css" media="all" href="/wp-content/themes/Ingenia/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php get_stylesheet_uri(); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
